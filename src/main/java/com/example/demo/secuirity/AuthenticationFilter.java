@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	
 
@@ -59,8 +60,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	        
 	        String userName = ((User) auth.getPrincipal()).getUsername(); 
 	        
+	 
 	        String token = Jwts.builder()
 	                .setSubject(userName)
+	                .claim("roles", ((User) auth.getPrincipal()).getAuthorities())
 	                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 	                .signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET )
 	                .compact();

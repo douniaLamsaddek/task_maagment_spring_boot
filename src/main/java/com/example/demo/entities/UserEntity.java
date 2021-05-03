@@ -13,7 +13,7 @@ public class UserEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+
 	@Id
 	@GeneratedValue
 	private long Id;
@@ -28,10 +28,10 @@ public class UserEntity implements Serializable {
 	private String encryptepassword;
 	private String emailVerificationToken;
 	private Boolean emailVerificationStatus;
-	
+	private String role;
 
 	public UserEntity(long id, String userId, String nom, String prenom, String email, String telephone, int age,
-			String encryptepassword, String emailVerificationToken, Boolean emailVerificationStatus) {
+			String encryptepassword, String emailVerificationToken, Boolean emailVerificationStatus,String role) {
 		super();
 		Id = id;
 		this.userId = userId;
@@ -43,10 +43,19 @@ public class UserEntity implements Serializable {
 		this.encryptepassword = encryptepassword;
 		this.emailVerificationToken = emailVerificationToken;
 		this.emailVerificationStatus = emailVerificationStatus;
+		this.role=role;
 	}
 	public UserEntity() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public long getId() {
 		return Id;
@@ -111,7 +120,6 @@ public class UserEntity implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	
 
 }

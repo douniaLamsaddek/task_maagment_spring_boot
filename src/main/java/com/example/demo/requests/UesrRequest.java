@@ -2,12 +2,14 @@ package com.example.demo.requests;
 
 public class UesrRequest {
 	
+
 	private String nom;
 	private String prenom;
 	private String email;
 	private String password;
 	private String telephone;
 	private int age;
+	private String role;
 	
 	
 	public UesrRequest(String nom, String prenom, String email, String password, String telephone, int age
@@ -56,6 +58,13 @@ public class UesrRequest {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	

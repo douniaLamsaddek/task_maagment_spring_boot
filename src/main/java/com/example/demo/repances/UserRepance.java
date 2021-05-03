@@ -6,6 +6,10 @@ public class UserRepance {
 	private String nom;
 	private String prenom;
 	private String email;
+	private String role;
+	private String telephone;
+	private int age;
+	
 	public UserRepance() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -55,7 +59,12 @@ public class UserRepance {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	private String telephone;
-	private int age;
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 
 }

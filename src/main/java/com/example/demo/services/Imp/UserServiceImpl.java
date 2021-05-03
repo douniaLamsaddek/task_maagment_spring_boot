@@ -2,12 +2,15 @@ package com.example.demo.services.Imp;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import com.example.demo.entities.UserEntity;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.UserService;
@@ -46,7 +49,9 @@ public class UserServiceImpl implements UserService {
 		UserEntity userEntity = userRepository.findByEmail(email);
 		if(userEntity == null) throw new UsernameNotFoundException(email);
 		
-		return new User(userEntity.getEmail(),userEntity.getEncryptepassword(),new ArrayList<>());
+		Collection<SimpleGrantedAuthority> roles=new ArrayList<>();
+		roles.add(new SimpleGrantedAuthority(userEntity.getRole()));
+		return new User(userEntity.getEmail(),userEntity.getEncryptepassword(),roles);
 	}
 
 	@Override

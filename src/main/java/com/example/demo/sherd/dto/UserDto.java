@@ -18,6 +18,13 @@ public class UserDto implements Serializable {
 	private String password;
 	private String telephone;
 	private int age;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	private String encryptepassword;
 	private String emailVerificationToken;
 	private Boolean emailVerificationStatus;
