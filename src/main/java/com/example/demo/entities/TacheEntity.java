@@ -26,19 +26,47 @@ public class TacheEntity implements Serializable {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "employe_id")
-	private EmployeEntity employe;
+	@JoinColumn()
+	private EmployeEntity employee;
 	
 	@ManyToOne
-	@JoinColumn(name = "projet_id")
+	@JoinColumn()
 	private ProjetEntity projet;
 	
 	@ManyToOne
-	@JoinColumn(name = "manager_id")
+	@JoinColumn()
 	private ManagerEntity manager;
 	
 	@OneToMany(mappedBy = "tache",cascade = CascadeType.ALL)
 	List<AvancementTacheEntity> avancements;
+	
+	
+
+	public TacheEntity(Long id, String tache_id, String titre, String description, Date date_debut, Date date_fin,
+			String status, EmployeEntity employee, ProjetEntity projet, ManagerEntity manager,
+			List<AvancementTacheEntity> avancements) {
+		super();
+		this.id = id;
+		this.tache_id = tache_id;
+		this.titre = titre;
+		this.description = description;
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.status = status;
+		this.employee = employee;
+		this.projet = projet;
+		this.manager = manager;
+		this.avancements = avancements;
+	}
+
+	
+	
+	public TacheEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -96,12 +124,12 @@ public class TacheEntity implements Serializable {
 		this.status = status;
 	}
 
-	public EmployeEntity getEmploye() {
-		return employe;
+	public EmployeEntity getEmployee() {
+		return employee;
 	}
 
-	public void setEmploye(EmployeEntity employe) {
-		this.employe = employe;
+	public void setEmployee(EmployeEntity employe) {
+		this.employee = employe;
 	}
 
 	public ProjetEntity getProjet() {

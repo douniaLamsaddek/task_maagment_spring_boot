@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-@Entity(name = "pojet")
+@Entity(name = "projet")
 public class ProjetEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,18 +28,44 @@ public class ProjetEntity implements Serializable {
 	private String document;
 	
 	@ManyToOne
-	@JoinColumn(name = "admin_id")
+	@JoinColumn()
 	AdminEntity admin;
 	
 	@OneToMany(mappedBy = "projet",cascade = CascadeType.ALL)
 	List<TacheEntity> taches;
 	
 	@ManyToOne
-	@JoinColumn(name = "manager_id")
+	@JoinColumn()
 	ManagerEntity manager;
 	
 	@OneToMany(mappedBy = "projet",cascade = CascadeType.ALL)
 	List<Avancemen_ProjettEntity> avancementsProjet;
+	
+	
+	
+
+	public ProjetEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProjetEntity(Long id, String prjet_id, String titre, String description, Date date_debut, Date date_fin,
+			String status, String document, AdminEntity admin, List<TacheEntity> taches, ManagerEntity manager,
+			List<Avancemen_ProjettEntity> avancementsProjet) {
+		super();
+		this.id = id;
+		this.prjet_id = prjet_id;
+		this.titre = titre;
+		this.description = description;
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.status = status;
+		this.document = document;
+		this.admin = admin;
+		this.taches = taches;
+		this.manager = manager;
+		this.avancementsProjet = avancementsProjet;
+	}
 
 	public Long getId() {
 		return id;

@@ -21,7 +21,7 @@ public class Avancemen_ProjettEntity implements Serializable {
 	private Date date_ajout;
 	
 	@ManyToOne()
-	@JoinColumn(name = "projet_id")
+	@JoinColumn()
 	private ProjetEntity projet;
 
 	public Long getId() {
@@ -64,4 +64,19 @@ public class Avancemen_ProjettEntity implements Serializable {
 		this.projet = projet;
 	}
 
+	public Avancemen_ProjettEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Avancemen_ProjettEntity(Long id, String titre, int score, Date date_ajout, ProjetEntity projet) {
+		super();
+		this.id = id;
+		Titre = titre;
+		this.score = score;
+		this.date_ajout = date_ajout;
+		this.projet = projet;
+	}
+
+	
 }

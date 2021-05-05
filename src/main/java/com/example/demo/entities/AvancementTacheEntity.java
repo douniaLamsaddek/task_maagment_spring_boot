@@ -3,11 +3,12 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+@Entity(name="avancement_tache")
 public class AvancementTacheEntity implements Serializable {
 	
 	@Id
@@ -18,7 +19,7 @@ public class AvancementTacheEntity implements Serializable {
 	private Date date_ajout;
 	
 	@ManyToOne()
-	@JoinColumn(name = "tache_id")
+	@JoinColumn()
 	private TacheEntity tache;
 
 	public Long getId() {
@@ -60,5 +61,20 @@ public class AvancementTacheEntity implements Serializable {
 	public void setTache(TacheEntity tache) {
 		this.tache = tache;
 	}
+
+	public AvancementTacheEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public AvancementTacheEntity(Long id, String titre, int score, Date date_ajout, TacheEntity tache) {
+		super();
+		this.id = id;
+		Titre = titre;
+		this.score = score;
+		this.date_ajout = date_ajout;
+		this.tache = tache;
+	}
+	
 
 }
